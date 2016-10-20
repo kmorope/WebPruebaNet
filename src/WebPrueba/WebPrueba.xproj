@@ -14,6 +14,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <SchemaVersion>2.0</SchemaVersion>
+    <ApplicationInsightsResourceId>/subscriptions/c030945d-4c98-4697-ba8d-a324fad262bf/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/WebPrueba</ApplicationInsightsResourceId>
   </PropertyGroup>
   <ItemGroup>
     <DnxInvisibleContent Include="bower.json" />
