@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using WebPrueba.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebPrueba
 {
@@ -35,7 +37,8 @@ namespace WebPrueba
         {
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
-
+            var connection = @"Server=tcp:jcrpserver.database.windows.net,1433;Initial Catalog=WebPruebas;Persist Security Info=False;User ID=kmorope;Password=347@bebita;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            services.AddDbContext<PersonContext>(options => options.UseSqlServer(connection));
             services.AddMvc();
         }
 
@@ -65,7 +68,7 @@ namespace WebPrueba
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Persons}/{action=Index}/{id?}");
             });
         }
     }

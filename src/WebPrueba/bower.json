@@ -6,6 +6,9 @@
     "jquery": "2.2.0",
     "jquery-validation": "1.14.0",
     "jquery-validation-unobtrusive": "3.2.6",
-    "angular": "1.5.5"
+    "angular": "1.5.5",
+    "datatables.net": "^1.10.12",
+    "datatables.net-bs": "^1.10.12",
+    "font-awesome": "fontawesome#^4.6.3"
   }
 }
