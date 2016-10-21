@@ -16,40 +16,23 @@
         <h1>Personas</h1>
     </div>
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <a class="btn btn-primary"asp-action="Create" asp-controller="Persons" style="margin-bottom: 10px;">
+        <a class="btn btn-primary js-btn-add-person" style="margin-bottom: 10px;">
             <i class="glyphicon glyphicon-user"></i>
             <span>Agregar Persona</span>
         </a>
+    
     </div>
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <table class="table" id="personsTable">
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Cedula</th>
-                <th></th>
-            </tr>
-            @foreach (var item in Model)
-            {
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PersonId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nombres)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Apellidos)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Cedula)
-                    </td>
-                    <td>
-                        <a class="fa fa-2x fa-trash-o pointer js-delete" data-id="@item.PersonId"></a>
-                    </td>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Cedula</th>
+                    <th>Email</th>
+                    <th>Opciones</th>
                 </tr>
-            }
+            </thead>
         </table>
 
     </div>

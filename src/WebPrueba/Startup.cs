@@ -37,7 +37,7 @@ namespace WebPrueba
         {
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
-            var connection = @"Server=tcp:jcrpserver.database.windows.net,1433;Initial Catalog=WebPruebas;Persist Security Info=False;User ID=kmorope;Password=347@bebita;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            var connection = @"Server=tcp:testservercrp.database.windows.net,1433;Initial Catalog=WebTest;Persist Security Info=False;User ID=kmorope;Password=347@bebita;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             services.AddDbContext<PersonContext>(options => options.UseSqlServer(connection));
             services.AddMvc();
         }

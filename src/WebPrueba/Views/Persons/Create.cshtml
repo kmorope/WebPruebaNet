@@ -5,60 +5,104 @@
 @model WebPrueba.Models.Person
 
 @{
-    ViewBag.Title = "Agregar Persona";
+    if (Model != null && !string.IsNullOrEmpty(Model.Nombres))
+    {
+        ViewBag.Title = "Editar Persona";
+    }
+    else
+    {
+        ViewBag.Title = "Agregar Persona";
+    }
+
 }
 
 <h2>@ViewData["Title"]</h2>
 
-<form asp-controller="Persons" asp-action="Create" method="post" class="form-horizontal" role="form">
-    <div class="form-horizontal">
+<form id="FormPerson" class="form" role="form" data-ajax="true" data-ajax-method="POST" data-ajax-complete="releaseFormDialog();">
+    <div>
         <div asp-validation-summary="All" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="Nombres" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Nombres" class="form-control" />
+            <label for="Nombres" asp-for="Nombres" ></label>
+            <div class="">
+                <input asp-for="Nombres" id="Nombres" name="Nombres" class="form-control" />
                 <span asp-validation-for="Nombres" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Apellidos" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Apellidos" class="form-control" />
+            <label asp-for="Apellidos" for="Apellidos"></label>
+            <div class="">
+                <input asp-for="Apellidos" id="Apellidos" name="Apellidos" class="form-control" />
                 <span asp-validation-for="Apellidos" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Cedula" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Cedula" class="form-control" />
+            <label asp-for="Cedula" for="Cedula" id="Cedula" ></label>
+            <div class="">
+                <input asp-for="Cedula" id="Cedula" name="Cedula" class="form-control" />
                 <span asp-validation-for="Cedula" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Direccion" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Direccion" class="form-control" />
+            <label for="Direccion" asp-for="Direccion" ></label>
+            <div class="">
+                <input asp-for="Direccion" id="Direccion" name="Direccion"  class="form-control" />
                 <span asp-validation-for="Direccion" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Email" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Email" class="form-control" />
+            <label for="Email" asp-for="Email" ></label>
+            <div class="">
+                <input asp-for="Email" id="Email" name="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Telefono" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Telefono" class="form-control" />
+            <label for="Telefono" asp-for="Telefono" ></label>
+            <div class="">
+                <input asp-for="Telefono" id="Telefono" name="Telefono" class="form-control" />
                 <span asp-validation-for="Telefono" class="text-danger"></span>
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+        @*<div class="form-group">
+            <div class="col-md-offset-2 ">
                 <input type="submit" value="Guardar" class="btn btn-success" />
             </div>
-        </div>
+        </div>*@
     </div>
 </form>
+ 
+<script>
+    $("#FormPerson").validate({
+        // Specify validation rules
+        rules: {
+            // The key name on the left side is the name attribute
+            // of an input field. Validation rules are defined
+            // on the right side
+            Nombres: "required",
+            Apellidos: "required",
+            Direccion: "required",
+            Telefono: "required",
+            Email: {
+                required: true,
+                // Specify that email should be validated
+                // by the built-in "email" rule
+                email: true
+            },
+            Cedula: {
+                required: true
+            }
+        },
+        // Specify validation error messages
+        messages: {
+            Nombres: "Campo Requerido",
+            Apellidos: "Campo Requerido",
+            Direccion: "Campo Requerido",
+            Telefono: "Campo Requerido",
+            Cedula:  "Campo Requerido",
+            Email: "Ingrese un email valido"
+        },
+        submitHandler: function () {
+            
+        }
+    });
+</script>
